@@ -1,0 +1,293 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #fff;
+  color: black;
+}
+
+input,
+textarea {
+  padding: 12px;
+  margin: 12px 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: transparent;
+  color: black;
+  border: 3px solid #000;
+  transition: transform 0.3s;
+}
+
+form input:focus,
+textarea:focus {
+  outline: none;
+  transform: scale(1.05);
+  background-color: #000;
+  color: #fff;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #aaa;
+  font-weight: bold;
+}
+
+.note-app__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 42px;
+  border-bottom: 1px solid #aaa;
+  background-color: #000;
+}
+
+.note-app__header h1 {
+  margin: 8px 0;
+  color: white;
+}
+
+.note-app__body {
+  max-width: 1000px;
+  margin: 16px auto;
+  padding: 12px;
+}
+
+.note-app__body h2 {
+  font-weight: normal;
+  margin: 16px 0;
+  text-align: center;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.note-input {
+  margin: 0 auto;
+  max-width: 500px;
+  margin-bottom: 48px;
+}
+
+.note-input input,
+.note-input textarea {
+  display: block;
+  width: 100%;
+}
+
+.note-input__title {
+  font-weight: bold;
+}
+
+.note-input__title__char-limit {
+  font-size: 14px;
+  font-weight: 500;
+  text-align: right;
+  color: #000;
+}
+
+.note-input__body {
+  min-height: 175px;
+}
+
+.note-input button {
+  display: block;
+  width: 70%;
+  padding: 10px;
+  margin: 0 auto;
+  background-color: transparent;
+  font-family: 'Poppins', sans-serif;
+  color: #000;
+  border: 3px solid #000;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.5s;
+  overflow: hidden;
+  position: relative;
+}
+
+.note-input button:hover {
+  color: #fff;
+}
+
+.note-input button::before {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 0%;
+  left: -20px;
+  bottom: 0;
+  transform: skewX(45deg);
+  background-color: #000;
+  z-index: -1;
+  transition: all 0.5s;
+}
+
+.note-input button:hover::before {
+  width: 120%;
+}
+
+.notes-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: minmax(min-content, max-content);
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+.notes-list__empty-message {
+  text-align: center;
+  color: #aaa;
+}
+
+.note-item {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 6px solid #000;
+  box-shadow: 8px 8px 0 #000;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.note-item:hover {
+  transform: translate(-5px, -5px);
+  box-shadow: 17px 17px 0 #000;
+}
+
+.note-item__content {
+  padding: 12px;
+  flex: 1;
+  color: white;
+}
+
+.note-item__title {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  color: #000;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  display: block;
+  position: relative;
+}
+
+.note-item__title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 90%;
+  height: 3px;
+  background-color: #000;
+  transform: translateX(-100%);
+  transition: transform 0.3s;
+}
+
+.note-item:hover .note-item__title::after {
+  transform: translateX(0);
+}
+
+.note-item__date {
+  font-size: 12px;
+  margin-bottom: 8px;
+  color: #292929;
+}
+
+.note-item__body {
+  font-size: 14px;
+  font-weight: 500;
+  color: #000;
+}
+
+.note-item__action {
+  display: flex;
+  flex-direction: row;
+}
+
+.note-item__delete-button,
+.note-item__archive-button {
+  position: relative;
+  overflow: hidden;
+  border: 3px solid #000;
+  background: #000;
+  color: #fff;
+  padding: 8px;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: transform 0.3s;
+  width: 50%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.note-item__delete-button::before {
+  content: 'Yakin?';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 105%;
+  background-color: #e40000;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(100%);
+  transition: transform 0.3s;
+}
+.note-item__archive-button::before {
+  content: 'Yakin?';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 105%;
+  background-color: #21c700;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(100%);
+  transition: transform 0.3s;
+}
+
+.note-item__delete-button:hover::before,
+.note-item__archive-button:hover::before {
+  transform: translateY(0);
+}
+
+.note-item__delete-button:active,
+.note-item__archive-button:active {
+  transform: scale(0.95);
+}
+
+@media only screen and (min-width: 500px) {
+  .notes-list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .notes-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .note-search input {
+    min-width: 400px;
+    font-weight: bold;
+    color: white;
+    border: 1px solid #aaa;
+  }
+
+  .note-search input::placeholder {
+    color: white;
+    font-weight: normal;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .notes-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
